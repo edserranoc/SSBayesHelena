@@ -1,0 +1,1 @@
+# Gianola-s-method
