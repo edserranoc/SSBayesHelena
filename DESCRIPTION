@@ -1,4 +1,3 @@
-Package: geanola1
 Type: Package
 Title: Implementation of Geanola's method 
 Version: 0.1.0
@@ -14,3 +13,4 @@ clusters of tetha-statistics.
 License: use_mit_license()
 Encoding: UTF-8
 LazyData: true
+
