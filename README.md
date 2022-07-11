@@ -1,4 +1,4 @@
-# Gianola_method
+# SSBayesHelena
 
  A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,
 which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model
