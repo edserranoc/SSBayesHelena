@@ -1,16 +1,19 @@
-Type: Package
-Title: Implementation of Geanola's method 
+Package: SSBayesHelena
+Title: Implementation of the method of Gianola
 Version: 0.1.0
-Author: Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
-Maintainer: Edison David Serrano Cardenas (edserranoc@unal.edu.co) and Javier Fernando Gonzalez Guzman (javgonzalezgu@unal.edu.co)
-Description: A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,
-which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model
-for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov
-chains. This step assigns a weakly informative prior to allelic frequencies and does not make any
-assumptions about evolutionary models. The second step regards samples from these posterior
-distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying
-clusters of tetha-statistics.
-License: use_mit_license()
+Authors@R: 
+    person(given = "Carlos Alberto",
+           family = "Martínez Niño",
+           role = c("aut", "cre"),
+           email = "cmartinez@agrosavia.co")
+Description: A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov chains. This step assigns a weakly informative prior to allelic frequencies and does not make any assumptions about evolutionary models. The second step regards samples from these posterior distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying clusters of tetha-statistics.
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Imports: 
+    flexmix,
+    stats
+Depends: 
+    R (>= 2.10)

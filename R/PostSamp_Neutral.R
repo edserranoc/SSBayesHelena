@@ -1,4 +1,4 @@
-#'PostSamp_Neutral
+##'PostSamp_Neutral
 #'
 #'@description Estimates the Fst parameter using the 'null model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
@@ -10,7 +10,7 @@
 #'Subpopulations must be coded using consecutive integer numbers starting from 1.
 #'
 #'@param Prior A vector of dimension 2 containing the values of model hyperpameters
-#'(positive real numbers). The default value is c(1/2,1/2).
+#'(positive real numbers). The default value is (1/2,1/2).
 #'
 #'@param N.Samples Integer corresponding to the number of samples used to perform the Monte Carlo
 #'estimation of the Fst parameter.
@@ -24,16 +24,18 @@
 #'dimension equal to the number of markers containing the Monte Carlo estimates of Fst under the
 #''null model'.
 #'
-#'@author Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
+#'@author Carlos Alberto MartÃ­nez NiÃ±o (cmartinez@@agrosavia.co).
 #'
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 #'signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
 #'
 #'@export
 #'
-#'@examples Data=sim.1data
-#'Ex1=PostSamp_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
-#'Ex1$ Theta.Samples
+#'@examples data(Genodata1)
+#'Ex1=PostSamp_Neutral(Genodata1,Prior=c(1/2,1/3),N.Samples=5000,
+#'Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+#'head(Ex1$ Theta.Samples)
+#'tail(Ex1$ Theta.Samples)
 
 
 

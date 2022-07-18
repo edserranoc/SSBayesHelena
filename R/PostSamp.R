@@ -24,14 +24,16 @@
 #'dimension equal to the number of markers containing the Monte Carlo estimates of Fst under the
 #''full model'.
 #'
-#'@author Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
+#'@author Carlos Alberto MartÃ­nez NiÃ±o (cmartinez@@agrosavia.co).
 #'
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 #'signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
 #'
-#'@examples Data=sim.1data
-#'Ex1=PostSamp(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+#'@examples
+#'data(Genodata1)
+#'Ex1=PostSamp(Genodata1,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
 #'Ex1$ Theta.Samples
+#'@export
 
 PostSamp=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols){
   Data=data.frame(Data)
