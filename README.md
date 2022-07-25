@@ -11,8 +11,13 @@ distributions as ‘data’ and fits a sequence of finite mixture models, with t
 clusters of tetha-statistics.
 
 ## Installation
-The development version from GitHub repository:
+To install the development version from GitHub repository:
 ``` r
 # install.packages("devtools")
 devtools::install_github("edserranoc/SSBayesHelena")
 ```
+
+## License
+
+The SSBayesHelena package as a whole is licensed under the GNUv3.0. See the 
+[LICENSE](docs/LICENSE) file for more details.
