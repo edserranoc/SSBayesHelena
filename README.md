@@ -10,6 +10,15 @@ assumptions about evolutionary models. The second step regards samples from thes
 distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying
 clusters of tetha-statistics.
 
+## Features
+
+- The first step uses a simple Bayesian model
+for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov
+chains.
+- The second step regards samples from these posterior
+distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying
+clusters of tetha-statistics.
+
 ## Installation
 To install the development version from GitHub repository:
 ``` r
