@@ -9,9 +9,8 @@ distributions as ‘data’ and fits a sequence of finite mixture models, with t
 clusters of tetha-statistics.
 
 ## Installation
-
+The development version from GitHub repository:
 ``` r
-# The development version from GitHub repository:
 # install.packages("devtools")
 devtools::install_github("tidyverse/SSBayesHelena")
 ```
