@@ -7,3 +7,11 @@ chains. This step assigns a weakly informative prior to allelic frequencies and 
 assumptions about evolutionary models. The second step regards samples from these posterior
 distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying
 clusters of tetha-statistics.
+
+## Installation
+
+``` r
+# The development version from GitHub repository:
+# install.packages("devtools")
+devtools::install_github("tidyverse/SSBayesHelena")
+```
