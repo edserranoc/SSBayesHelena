@@ -28,5 +28,5 @@ devtools::install_github("edserranoc/SSBayesHelena")
 
 ## License
 
-The SSBayesHelena package as a whole is licensed under the GNUv3.0. See the 
+The SSBayesHelena package as a whole is licensed under the GPLv3.0. See the 
 [LICENSE](LICENSE) file for more details.
