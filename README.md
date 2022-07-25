@@ -12,5 +12,5 @@ clusters of tetha-statistics.
 The development version from GitHub repository:
 ``` r
 # install.packages("devtools")
-devtools::install_github("tidyverse/SSBayesHelena")
+devtools::install_github("edserranoc/SSBayesHelena")
 ```
