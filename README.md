@@ -1,5 +1,7 @@
 # SSBayesHelena
 
+## Overview
+
  A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,
 which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model
 for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov
