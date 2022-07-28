@@ -1,11 +1,21 @@
 Package: SSBayesHelena
 Title: Implementation of the method of Gianola
 Version: 0.1.0
-Authors@R: c(
-    person(given = "Carlos Alberto", family = "Martínez Niño", role = c("aut", "cre"), email = "cmartinez@agrosavia.co"),
-    person(given = "Ronnal Esneyder", family = "Ortiz Cuadros", role = c("aut", "cre"), email = "rortiz@agrosavia.co"),
-    person("Edison David", "Serrano Cárdenas", role = c("aut")),
-    person("Javier Fernando", "Gonzalez Guzman", role = c("aut")),
+Authors@R: 
+    c(person(given = "Carlos Alberto", 
+            family = "Martínez Niño", 
+            role = c("aut", "cre"), 
+            email = "cmartinez@agrosavia.co"),
+      person(given = "Ronnal Esneyder", 
+            family = "Ortiz Cuadros", 
+            role = c("aut", "cre"), 
+            email = "rortiz@agrosavia.co"),
+      person(given = "Edison David",
+             family = "Serrano Cárdenas", 
+             role = c("aut")),
+      person(given = "Javier Fernando", 
+             family = "Gonzalez Guzman", 
+             role = c("aut"))
            )
 Description: A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov chains. This step assigns a weakly informative prior to allelic frequencies and does not make any assumptions about evolutionary models. The second step regards samples from these posterior distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying clusters of tetha-statistics.
 License: GPL (>= 3)
