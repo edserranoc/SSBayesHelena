@@ -8,7 +8,7 @@ Authors@R:
             email = "cmartinez@agrosavia.co"),
       person(given = "Ronnal Esneyder", 
             family = "Ortiz Cuadros", 
-            role = c("aut", "cre"), 
+            role = c("aut"), 
             email = "rortiz@agrosavia.co"),
       person(given = "Edison David",
              family = "Serrano Cárdenas", 
