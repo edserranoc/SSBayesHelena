@@ -4,8 +4,7 @@
 \alias{run_G}
 \title{run_G}
 \usage{
-run_G(Data,N.Groups,Prior,N.Samples,Pop.col,Geno.cols,Sel.SNP='TRUE',
-tailp=0.05,Prior.neutral)
+run_G(Data,N.Groups,Prior,N.Samples,Pop.col,Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
 }
 \arguments{
 \item{Data}{A data frame or matrix containing genotypic data from m markers as well as a column
@@ -33,7 +32,15 @@ in the clustering step. The default value es TRUE.}
 null posterior distribution of Fst. The default value is 0.05}
 
 \item{Prior.neutral}{A vector of dimension 2 containing the values of model hyperpameters
-(positive real numbers) for the 'null model'.}
+(positive real numbers) for the 'null model'. This should be equal to the parameter Prior,
+except when formulating different hyperparameters for each subpopulations.}
+
+\item{Method}{The method and model to estimate the posterior mean and variance of Fst.
+G-MC: for Monte Carlo Integration as proposed in Gianola et al. (2010),
+PedM-MCG-Laplace: Monte Carlo Integration incorporating pedigree information via
+the likelihood function derived by Mart?nez et al. (2017)
+GPedM-Laplace: Laplace approximation using the original model formulation,
+GPedM-Laplace: Laplace approximation using the model that incorporates pedigree information}
 }
 \value{
 A list containing the following objects.
@@ -46,11 +53,19 @@ Selected_Loci. The ID's of the selected loci.
 }
 \description{
 Performs the two-step approach for detecting selection signatures using genomic data from
-diploid individuals and biallelic markers developed by Gianola et al. (2010).
+diploid individuals and biallelic markers developed by Gianola et al. (2010) along with some extensions
+and modifications to perform inference based on the Laplace approximation and to incorporate pedigree
+information using the likelihood derived by Mart?nez et al. (2017).
 }
 \references{
 Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
+
+Martínez, C.A., Khare, K., Banerjee, A., Elzo, M.A. 2017.
+Joint genome-wide prediction in several populations accounting for randomness
+of genotypes: A hierarchical Bayes approach. I: Multivariate Gaussian priors
+for marker effects and derivation of the joint probability mass function of genotypes.
+Journal of Theoretical Biology 417, 8-19.
 }
 \author{
 Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).

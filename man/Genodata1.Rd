@@ -5,7 +5,7 @@
 \alias{Genodata1}
 \title{Name of Data}
 \format{
-A data frame with xxxxx rows and xxxxx variables:
+A data frame with 1247 rows and 50 variables:
 \describe{
 
 ...
@@ -18,6 +18,10 @@ A data frame with xxxxx rows and xxxxx variables:
 Genodata1
 }
 \description{
-A dataset containing .......
+A data frame or matrix containing genotypic
+data from m markers as well as a column indicating the subpopulation
+to which the individual belongs.
+Subpopulations must be coded using
+consecutive integer numbers starting from 1.
 }
 \keyword{datasets}
