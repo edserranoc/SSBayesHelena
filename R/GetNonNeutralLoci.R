@@ -1,5 +1,7 @@
 #'GetNonNeutralLoci
 #'
+#'@importFrom stats quantile
+#'
 #'@description Performs selection of marker loci with extreme estimated Fst values using the
 #'approach developed by Gianola et al. (2010).
 #'

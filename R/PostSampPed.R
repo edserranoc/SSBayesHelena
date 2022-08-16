@@ -1,8 +1,10 @@
 #'PostSampPed
 #'
+#'@importFrom stats rbeta
+#'
 #'@description Estimates the Fst parameter using an extension of the 'full model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
-#'incorporating pedigree information by using a modification of the likelihood derived by Mart?nez at al. (2017)
+#'incorporating pedigree information by using a modification of the likelihood derived by Martínez at al. (2017)
 #'
 #'@usage PostSampPed(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,Pedigree)
 #'
@@ -34,7 +36,7 @@
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 #'signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
 #'
-#'@references Mart?nez, C.A., Khare, K., Banerjee, A., Elzo, M.A. 2017.
+#'@references Martínez, C.A., Khare, K., Banerjee, A., Elzo, M.A. 2017.
 #'Joint genome-wide prediction in several populations accounting for randomness
 #'of genotypes: A hierarchical Bayes approach. I: Multivariate Gaussian priors
 #'for marker effects and derivation of the joint probability mass function of genotypes.
@@ -43,7 +45,8 @@
 #'@export
 #'
 #'@examples Data=sim.1data
-#'Ex1=PostSampPed(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols=c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
+#'Ex1=PostSampPed(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,
+#'Geno.cols=c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
 #'summary(Ex1$Posterior_Means)
 
 PostSampPed=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,

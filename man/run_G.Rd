@@ -4,39 +4,52 @@
 \alias{run_G}
 \title{run_G}
 \usage{
-run_G(Data,N.Groups,Prior,N.Samples,Pop.col,Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
+run_G(Data,N.Groups,Prior,N.Samples,Pop.col,
+Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
 }
 \arguments{
-\item{Data}{A data frame or matrix containing genotypic data from m markers as well as a column
-indicating the subpopulation to which the individual belongs. Subpopulations must be coded using
+\item{Data}{A data frame or matrix containing genotypic data
+from m markers as well as a column
+indicating the subpopulation to which the individual belongs.
+Subpopulations must be coded using
 consecutive integer numbers starting from 1.}
 
-\item{N.Groups}{A vector containing integers corresponding to the number of groups to be fitted
-in the finite mixture model.}
+\item{N.Groups}{A vector containing integers corresponding to
+the number of groups to be fitted in the finite mixture model.}
 
-\item{Prior}{A vector of dimension 2 containing the 'full model' hyperparameters (positive real numbers).}
+\item{Prior}{A vector of dimension 2 containing the 'full model'
+hyperparameters (positive real numbers).}
 
-\item{N.Samples}{Integer corresponding to the number of samples used to perform the Monte Carlo
-estimation of the Fst parameter.}
+\item{N.Samples}{Integer corresponding to the number of samples
+used to perform the Monte Carlo estimation of the Fst parameter.}
 
-\item{Pop.col}{Integer indicating the column that contains the subpopulation each individual belongs to.}
+\item{Pop.col}{Integer indicating the column that contains the
+subpopulation each individual belongs to.}
 
-\item{Geno.cols}{Vector containing the columns corresponding to genotypes in the input dataset.}
+\item{Geno.cols}{Vector containing the columns corresponding to
+genotypes in the input dataset.}
 
-\item{tailp}{Numeric value indicating the tail probability used to declare a value as extreme under the
+\item{tailp}{Numeric value indicating the tail probability used
+to declare a value as extreme under the
 null posterior distribution of Fst. The default value is 0.05}
 
-\item{Prior.neutral}{A vector of dimension 2 containing the values of model hyperpameters
-(positive real numbers) for the 'null model'. This should be equal to the parameter Prior,
-except when formulating different hyperparameters for each subpopulations. This argument
-is required even when using the two methods based on the Laplace approximation because
-it is used to approximate the posterior null distribution to select markers to be
+\item{Prior.neutral}{A vector of dimension 2 containing the
+values of model hyperpameters
+(positive real numbers) for the 'null model'. This should be equal
+to the parameter Prior, except when formulating different
+hyperparameters for each subpopulations. This argument
+is required even when using the two methods based on
+the Laplace approximation because it is used to
+approximate the posterior null distribution to select markers to be
 considered in the second step.}
 
-\item{Method}{The method and model to estimate the posterior mean and variance of Fst.
-G-MC: for Monte Carlo Integration as proposed in Gianola et al. (2010),
-PedM-MCG-Laplace: Monte Carlo Integration incorporating pedigree information via
-the likelihood function derived by Mart?nez et al. (2017)
+\item{Method}{The method and model to estimate the
+posterior mean and variance of Fst.
+G-MC: for Monte Carlo Integration as proposed in
+Gianola et al. (2010),
+PedM-MCG-Laplace: Monte Carlo Integration incorporating
+pedigree information via
+the likelihood function derived by Martínez et al. (2017)
 GPedM-Laplace: Laplace approximation using the original model formulation,
 GPedM-Laplace: Laplace approximation using the model that incorporates pedigree information}
 }
@@ -51,10 +64,13 @@ Selected_Loci. The ID's of the selected loci.
 Method. The method used to estimate the posterior means of Fst.
 }
 \description{
-Performs the two-step approach for detecting selection signatures using genomic data from
-diploid individuals and biallelic markers developed by Gianola et al. (2010) along with some extensions
-and modifications to perform inference based on the Laplace approximation and to incorporate pedigree
-information using the likelihood derived by Martínez et al. (2017).
+Performs the two-step approach for detecting
+selection signatures using genomic data from
+diploid individuals and biallelic markers developed by
+Gianola et al. (2010) and modifications to perform
+inference based on the Laplace approximation and to
+incorporate pedigree information using the likelihood
+derived by Martínez et al. (2017).
 }
 \examples{
 Data=sim.2data

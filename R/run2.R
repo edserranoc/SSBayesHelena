@@ -11,7 +11,9 @@
 #'posterior means of Fst under the 'full model'.
 #'
 #'@return A list containing the summary of the finite mixture model for each number of groups.
-
+#'
+#'@import  flexmix
+#'
 #'@author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #'
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection

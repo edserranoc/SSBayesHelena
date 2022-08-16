@@ -1,42 +1,58 @@
 #'run_G
 #'
-#'@description Performs the two-step approach for detecting selection signatures using genomic data from
-#'diploid individuals and biallelic markers developed by Gianola et al. (2010) along with some extensions
-#'and modifications to perform inference based on the Laplace approximation and to incorporate pedigree
-#'information using the likelihood derived by Martínez et al. (2017).
+#'@description Performs the two-step approach for detecting
+#'selection signatures using genomic data from
+#'diploid individuals and biallelic markers developed by
+#'Gianola et al. (2010) and modifications to perform
+#'inference based on the Laplace approximation and to
+#'incorporate pedigree information using the likelihood
+#'derived by Martínez et al. (2017).
 #'
-#'@usage run_G(Data,N.Groups,Prior,N.Samples,Pop.col,Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
+#'@usage run_G(Data,N.Groups,Prior,N.Samples,Pop.col,
+#'Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
 #'
-#'@param Data A data frame or matrix containing genotypic data from m markers as well as a column
-#'indicating the subpopulation to which the individual belongs. Subpopulations must be coded using
+#'@param Data A data frame or matrix containing genotypic data
+#'from m markers as well as a column
+#'indicating the subpopulation to which the individual belongs.
+#'Subpopulations must be coded using
 #'consecutive integer numbers starting from 1.
 #'
-#'@param N.Groups A vector containing integers corresponding to the number of groups to be fitted
-#'in the finite mixture model.
+#'@param N.Groups A vector containing integers corresponding to
+#'the number of groups to be fitted in the finite mixture model.
 #'
-#'@param Prior A vector of dimension 2 containing the 'full model' hyperparameters (positive real numbers).
+#'@param Prior A vector of dimension 2 containing the 'full model'
+#' hyperparameters (positive real numbers).
 #'
-#'@param N.Samples Integer corresponding to the number of samples used to perform the Monte Carlo
-#'estimation of the Fst parameter.
+#'@param N.Samples Integer corresponding to the number of samples
+#'used to perform the Monte Carlo estimation of the Fst parameter.
 #'
-#'@param Pop.col Integer indicating the column that contains the subpopulation each individual belongs to.
+#'@param Pop.col Integer indicating the column that contains the
+#' subpopulation each individual belongs to.
 #'
-#'@param Geno.cols Vector containing the columns corresponding to genotypes in the input dataset.
+#'@param Geno.cols Vector containing the columns corresponding to
+#' genotypes in the input dataset.
 #'
-#'@param tailp Numeric value indicating the tail probability used to declare a value as extreme under the
+#'@param tailp Numeric value indicating the tail probability used
+#'to declare a value as extreme under the
 #'null posterior distribution of Fst. The default value is 0.05
 #'
-#'@param Prior.neutral A vector of dimension 2 containing the values of model hyperpameters
-#'(positive real numbers) for the 'null model'. This should be equal to the parameter Prior,
-#'except when formulating different hyperparameters for each subpopulations. This argument
-#'is required even when using the two methods based on the Laplace approximation because
-#'it is used to approximate the posterior null distribution to select markers to be
+#'@param Prior.neutral A vector of dimension 2 containing the
+#'values of model hyperpameters
+#'(positive real numbers) for the 'null model'. This should be equal
+#'to the parameter Prior, except when formulating different
+#'hyperparameters for each subpopulations. This argument
+#'is required even when using the two methods based on
+#'the Laplace approximation because it is used to
+#'approximate the posterior null distribution to select markers to be
 #'considered in the second step.
 #'
-#'@param Method The method and model to estimate the posterior mean and variance of Fst.
-#'G-MC: for Monte Carlo Integration as proposed in Gianola et al. (2010),
-#'PedM-MCG-Laplace: Monte Carlo Integration incorporating pedigree information via
-#'the likelihood function derived by Mart?nez et al. (2017)
+#'@param Method The method and model to estimate the
+#'posterior mean and variance of Fst.
+#'G-MC: for Monte Carlo Integration as proposed in
+#'Gianola et al. (2010),
+#'PedM-MCG-Laplace: Monte Carlo Integration incorporating
+#' pedigree information via
+#'the likelihood function derived by Martínez et al. (2017)
 #'GPedM-Laplace: Laplace approximation using the original model formulation,
 #'GPedM-Laplace: Laplace approximation using the model that incorporates pedigree information
 #'

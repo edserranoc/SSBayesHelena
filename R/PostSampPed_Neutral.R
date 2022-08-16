@@ -1,5 +1,7 @@
 #'PostSampPed_Neutral
 #'
+#'@importFrom stats rbeta
+#'
 #'@description Estimates the Fst parameter using an extension of the 'null model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
 #'incorporating pedigree information by using a modification the likelihood derived by Mart?nez at al. (2017).
@@ -42,7 +44,9 @@
 #'@export
 #'
 #'@examples Data=sim.1data
-#'Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
+#'Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),
+#'N.Samples=5000,Pop.col=1,
+#'Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
 #'summary(Ex1$Posterior_Means)
 
 PostSampPed_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,

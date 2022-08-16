@@ -37,7 +37,9 @@ incorporating pedigree information by using a modification the likelihood derive
 }
 \examples{
 Data=sim.1data
-Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
+Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),
+N.Samples=5000,Pop.col=1,
+Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
 summary(Ex1$Posterior_Means)
 }
 \references{

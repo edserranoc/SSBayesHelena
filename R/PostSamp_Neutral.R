@@ -1,5 +1,7 @@
 #'PostSamp_Neutral
 #'
+#'@importFrom stats rbeta
+#'
 #'@description Estimates the Fst parameter using the 'null model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
 #'
