@@ -19,8 +19,8 @@ containing the values of model hyperpameters (positive real numbers). The defaul
 \item{Geno.cols}{Vector containing the columns corresponding to genotypes in the input dataset.}
 }
 \value{
-A vector of dimension number of markers by 1 containing the posterior means of
-the Fst for each marker under the 'full model'.
+Posterior_Means: A vector of dimension number of markers by 1 containing the
+posterior means of the Fst for each marker under the 'full model'.
 }
 \description{
 Estimates the posterior mean of the Fst parameter using the Laplace

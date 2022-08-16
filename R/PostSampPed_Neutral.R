@@ -43,14 +43,13 @@
 #'
 #'@examples Data=sim.1data
 #'Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
-#'Ex1$ Theta.Samples
-
+#'summary(Ex1$Posterior_Means)
 
 PostSampPed_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,
-                               Pedigree){
+                             Pedigree){
   Data=data.frame(Data)
-  if(ncol(Pedigree)!=4)stop("Pedigree file must contain 4 columns:population, individual, sire, dam")
-  Sum=Pedigree[,3]+Pedigree[,4]
+  if(ncol(Pedigree)!=3)stop("Pedigree file must contain 3 columns:population, individual, sire, dam")
+  Sum=Pedigree[,2]+Pedigree[,3]
   Founders=Data[which(is.na(Sum)==TRUE),]
   npop=length(unique(Founders[,Pop.col]))
   if(npop==1)stop("The number of populations must be greater or equal than two")
@@ -69,5 +68,5 @@ PostSampPed_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,
     }
   }
   PostMean.Theta=rowMeans(Theta)
-  return(list(Theta.Samples=Theta,PosteriorMeans=PostMean.Theta))
+  return(list(Theta.Samples=Theta,Posterior_Means=PostMean.Theta))
 }

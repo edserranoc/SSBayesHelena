@@ -2,7 +2,7 @@
 #'
 #'@description Estimates the Fst parameter using an extension of the 'full model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
-#'incorporating pedigree information by using a modification the likelihood derived by Mart?nez at al. (2017)
+#'incorporating pedigree information by using a modification of the likelihood derived by Mart?nez at al. (2017)
 #'
 #'@usage PostSampPed(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,Pedigree)
 #'
@@ -23,10 +23,11 @@
 #'@param Pedigree A data frame with four columns corresponding to Population, individual, sire and dam.
 #'with missing values for unknown parents. All four variables have to be coded using positive integers.
 #'
-#'@return A list containing two elements. Theta.samples. Matrix of dimension (number of markers) X N.Samples
-#'containing each sample used to compute the Monte Carlo estimate of Fst. PosteriorMeans. Vector of
-#'dimension equal to the number of markers containing the Monte Carlo estimates of Fst under the
-#''full model'.
+#'@return A list containing two elements:
+#'Theta.samples: A matrix of dimension (number of markers) X N.Samples
+#'containing each sample used to compute the Monte Carlo estimate of Fst.
+#'PosteriorMeans: Vector of dimension equal to the number of markers containing
+#'the Monte Carlo estimates of Fst under the'full model'.
 #'
 #'@author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #'
@@ -43,16 +44,18 @@
 #'
 #'@examples Data=sim.1data
 #'Ex1=PostSampPed(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols=c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
-#'Ex1$ Theta.Samples
+#'summary(Ex1$Posterior_Means)
 
 PostSampPed=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,
-                       Pedigree){
+                     Pedigree){
   Data=data.frame(Data)
-  if(ncol(Pedigree)!=4)stop("Pedigree file must contain 4 columns:population, individual, sire and dam")
-  Sum=Pedigree[,3]+Pedigree[,4]
-  Founders=Data[which(is.na(Sum)==TRUE),]
-  npop=length(unique(Founders[,Pop.col]))
-  if(npop==1)stop("The number of populations must be greater or equal than two")
+  if(ncol(Pedigree)!=3)stop("Pedigree file must contain 3 columns: individual, sire and dam")
+  Sum<-as.numeric(is.na(Pedigree[,2]))+as.numeric(is.na(Pedigree[,3]))
+  Founders<-Data[which(Sum==2),]
+  Table=matrix(table(Founders[,Pop.col]))
+  if(length(which(Table<=1))>=1)stop("There is at least one subpopulation with a single founder")
+  npop<-length(unique(Founders[,Pop.col]))
+  if(npop==1)stop("Founders must be distributed in more than one subpopulation")
   nloci=length(Geno.cols)
   counts=matrix(NA,nrow=nloci,ncol=npop)
   nallelesr=matrix(NA,nrow=npop)
@@ -90,5 +93,8 @@ PostSampPed=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,
     }
   }
   PostMean.Theta=rowMeans(Theta)
-  return(list(Theta.Samples=Theta,PosteriorMeans=PostMean.Theta))
+  Table<-data.frame(cbind(seq(1:npop),Table))
+  colnames(Table)<-c("Subpopulation","Number of Founders")
+  return(list(Theta.Samples=Theta,Posterior_Means=PostMean.Theta,
+              N_Founders=Table))
 }

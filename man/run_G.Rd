@@ -14,8 +14,7 @@ consecutive integer numbers starting from 1.}
 \item{N.Groups}{A vector containing integers corresponding to the number of groups to be fitted
 in the finite mixture model.}
 
-\item{Prior}{A vector of dimension 2 containing the values of model the 'full model' hyperparameters
-(positive real numbers).}
+\item{Prior}{A vector of dimension 2 containing the 'full model' hyperparameters (positive real numbers).}
 
 \item{N.Samples}{Integer corresponding to the number of samples used to perform the Monte Carlo
 estimation of the Fst parameter.}
@@ -24,16 +23,15 @@ estimation of the Fst parameter.}
 
 \item{Geno.cols}{Vector containing the columns corresponding to genotypes in the input dataset.}
 
-\item{Sel.SNP}{Logical. If TRUE, markers are selected using the rule defined by Gianola et al. (2010),
-if FALSE all markers are set as 'selected' and consequently all their estimated Fst values are used
-in the clustering step. The default value es TRUE.}
-
 \item{tailp}{Numeric value indicating the tail probability used to declare a value as extreme under the
 null posterior distribution of Fst. The default value is 0.05}
 
 \item{Prior.neutral}{A vector of dimension 2 containing the values of model hyperpameters
 (positive real numbers) for the 'null model'. This should be equal to the parameter Prior,
-except when formulating different hyperparameters for each subpopulations.}
+except when formulating different hyperparameters for each subpopulations. This argument
+is required even when using the two methods based on the Laplace approximation because
+it is used to approximate the posterior null distribution to select markers to be
+considered in the second step.}
 
 \item{Method}{The method and model to estimate the posterior mean and variance of Fst.
 G-MC: for Monte Carlo Integration as proposed in Gianola et al. (2010),
@@ -45,17 +43,41 @@ GPedM-Laplace: Laplace approximation using the model that incorporates pedigree 
 \value{
 A list containing the following objects.
 N_Groups. The selected number of groups used to cluster markers.
-Groups. The group memberships.
+Groups. The groups of markers.
 Group.sizes. The number of markers in each group.
 Post.means The estimated posterior means of Fst under the 'full model'.
 NCandidateLoci. The number of selected loci.
 Selected_Loci. The ID's of the selected loci.
+Method. The method used to estimate the posterior means of Fst.
 }
 \description{
 Performs the two-step approach for detecting selection signatures using genomic data from
 diploid individuals and biallelic markers developed by Gianola et al. (2010) along with some extensions
 and modifications to perform inference based on the Laplace approximation and to incorporate pedigree
-information using the likelihood derived by Mart?nez et al. (2017).
+information using the likelihood derived by Martínez et al. (2017).
+}
+\examples{
+Data=sim.2data
+G_Method3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+Geno.cols=c(5:1004),tailp=0.05,
+Prior.neutral=c(1/2,1/2),Method="G-MC")
+
+G_Method_Ped3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+                   Geno.cols=c(5:1004),tailp=0.05,
+                   Prior.neutral=c(1/2,1/2),Method="GPedM-MC",Pedigree=Data3[,1:3])
+
+Laplace_PedEx3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+                    Geno.cols=c(5:1004),tailp=0.05,
+                    Prior.neutral=c(1/2,1/2),Method="GPedM-Laplace",Pedigree=Data3[,1:3])
+
+Laplace3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+              Geno.cols=c(5:1004),tailp=0.05,
+              Prior.neutral=c(1/2,1/2),Method="G-Laplace")
+
+summary(G_Method$Post.means[,2])
+summary(G_Method_Ped$Post.means[,2])
+summary(Laplace_PedEx$Post.means[,2])
+summary(Laplace$Post.means[,2])
 }
 \references{
 Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection

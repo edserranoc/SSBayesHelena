@@ -17,8 +17,8 @@
 #'
 #'@param Geno.cols Vector containing the columns corresponding to genotypes in the input dataset.
 #'
-#'@return A vector of dimension number of markers by 1 containing the posterior means of
-#'the Fst for each marker under the 'full model'.
+#'@return Posterior_Means: A vector of dimension number of markers by 1 containing the
+#'posterior means of the Fst for each marker under the 'full model'.
 #'
 #'@author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #'
@@ -32,6 +32,7 @@
 Laplace_indep=function(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols){
   Data=data.frame(Data)
   npop=length(unique(Data[,Pop.col]))
+  if(npop==1)stop("There must be at least two subpopulations")
   nloci=length(Geno.cols)
   counts=countsc=matrix(NA,nrow=nloci,ncol=npop)
   nallelesr=matrix(NA,nrow=npop)
@@ -63,7 +64,7 @@ Laplace_indep=function(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols){
       logfact=sum(logPowerAD[l,]+logPoweraD[l,]-(log(SqrtD[l,])+logBeta[l,]))
       logPostMeanFst=log(Factor1)+logfact+(0.5*npop)*(log(2*pi))
       PostMeans[l]=exp(logPostMeanFst)
-      }
+    }
   }else{
     A=counts+1
     aa=countsc+1
@@ -89,8 +90,8 @@ Laplace_indep=function(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols){
       PostMeans[l]=exp(logPostMeanFst)
     }
   }
-  return(Posterior_Means=PostMeans)
+  Table<-matrix(table(Data[,Pop.col]))
+  Table<-data.frame(cbind(seq(1:npop),Table))
+  colnames(Table)<-c("Subpopulation","Number of individuals")
+  return(list(Posterior_Means=PostMeans,N_Individuals=Table))
 }
-
-
-

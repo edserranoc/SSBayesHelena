@@ -3,7 +3,7 @@
 #'@description Performs the two-step approach for detecting selection signatures using genomic data from
 #'diploid individuals and biallelic markers developed by Gianola et al. (2010) along with some extensions
 #'and modifications to perform inference based on the Laplace approximation and to incorporate pedigree
-#'information using the likelihood derived by Mart?nez et al. (2017).
+#'information using the likelihood derived by Martínez et al. (2017).
 #'
 #'@usage run_G(Data,N.Groups,Prior,N.Samples,Pop.col,Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
 #'
@@ -14,8 +14,7 @@
 #'@param N.Groups A vector containing integers corresponding to the number of groups to be fitted
 #'in the finite mixture model.
 #'
-#'@param Prior A vector of dimension 2 containing the values of model the 'full model' hyperparameters
-#'(positive real numbers).
+#'@param Prior A vector of dimension 2 containing the 'full model' hyperparameters (positive real numbers).
 #'
 #'@param N.Samples Integer corresponding to the number of samples used to perform the Monte Carlo
 #'estimation of the Fst parameter.
@@ -24,16 +23,15 @@
 #'
 #'@param Geno.cols Vector containing the columns corresponding to genotypes in the input dataset.
 #'
-#'@param Sel.SNP Logical. If TRUE, markers are selected using the rule defined by Gianola et al. (2010),
-#'if FALSE all markers are set as 'selected' and consequently all their estimated Fst values are used
-#'in the clustering step. The default value es TRUE.
-#'
 #'@param tailp Numeric value indicating the tail probability used to declare a value as extreme under the
 #'null posterior distribution of Fst. The default value is 0.05
 #'
 #'@param Prior.neutral A vector of dimension 2 containing the values of model hyperpameters
 #'(positive real numbers) for the 'null model'. This should be equal to the parameter Prior,
-#'except when formulating different hyperparameters for each subpopulations.
+#'except when formulating different hyperparameters for each subpopulations. This argument
+#'is required even when using the two methods based on the Laplace approximation because
+#'it is used to approximate the posterior null distribution to select markers to be
+#'considered in the second step.
 #'
 #'@param Method The method and model to estimate the posterior mean and variance of Fst.
 #'G-MC: for Monte Carlo Integration as proposed in Gianola et al. (2010),
@@ -44,11 +42,12 @@
 #'
 #'@return A list containing the following objects.
 #'N_Groups. The selected number of groups used to cluster markers.
-#'Groups. The group memberships.
+#'Groups. The groups of markers.
 #'Group.sizes. The number of markers in each group.
 #'Post.means The estimated posterior means of Fst under the 'full model'.
 #'NCandidateLoci. The number of selected loci.
 #'Selected_Loci. The ID's of the selected loci.
+#'Method. The method used to estimate the posterior means of Fst.
 
 
 #'@author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
@@ -63,35 +62,57 @@
 #'Journal of Theoretical Biology 417, 8-19.
 #'
 #'@export
+#'
+#'@examples Data=sim.2data
+#'G_Method3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'Geno.cols=c(5:1004),tailp=0.05,
+#'Prior.neutral=c(1/2,1/2),Method="G-MC")
+#'
+#'G_Method_Ped3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'                    Geno.cols=c(5:1004),tailp=0.05,
+#'                    Prior.neutral=c(1/2,1/2),Method="GPedM-MC",Pedigree=Data3[,1:3])
+#'
+#'Laplace_PedEx3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'                     Geno.cols=c(5:1004),tailp=0.05,
+#'                     Prior.neutral=c(1/2,1/2),Method="GPedM-Laplace",Pedigree=Data3[,1:3])
+#'
+#'Laplace3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'               Geno.cols=c(5:1004),tailp=0.05,
+#'               Prior.neutral=c(1/2,1/2),Method="G-Laplace")
+#'
+#'summary(G_Method$Post.means[,2])
+#'summary(G_Method_Ped$Post.means[,2])
+#'summary(Laplace_PedEx$Post.means[,2])
+#'summary(Laplace$Post.means[,2])
 
-run_G=function(Data,N.Groups,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,Sel.SNP="TRUE",tailp=0.05,
-               Prior.neutral=c(1/2,1/2),Method=c("G-MC","GPedM-MC","G-Laplace","GPedM-Laplace"),
-               Pedigree){
+run_G=function(Data,N.Groups,Prior=c(1/2,1/2),N.Samples=NULL,Pop.col,Geno.cols,tailp=0.05,
+               Prior.neutral=c(1/2,1/2),
+               Method=c("G-MC","GPedM-MC","G-Laplace","GPedM-Laplace"),Pedigree=NULL){
   G=length(N.Groups)
   nloci=length(Geno.cols)
   if(Method=="G-MC"){
     Run=PostSamp(Data,Prior,N.Samples=N.Samples,Pop.col,Geno.cols)
-    Post.means=Run$PosteriorMeans
+    Post.means=Run$Posterior_Means
   }else if(Method=="GPedM-MC"){
     Run=PostSampPed(Data,Prior,N.Samples=N.Samples,Pop.col,Geno.cols,Pedigree)
-    Post.means=Run$PosteriorMeans
+    Post.means=Run$Posterior_Means
   }else if(Method=="G-Laplace"){
-    Run=PostSampPed(Data,Prior,N.Samples=N.Samples,Pop.col,Geno.cols,Pedigree)
-    Post.means=Run$PosteriorMeans
+    Run=Laplace_indep(Data,Prior,Pop.col,Geno.cols)
+    Post.means=Run$Posterior_Means
   }else{
-    Run=PostSampPed(Data,Prior,N.Samples=N.Samples,Pop.col,Geno.cols,Pedigree)
-    Post.means=Run$PosteriorMeans
+    Run=Laplace_Ped(Data,Prior,Pop.col,Geno.cols,Pedigree)
+    Post.means=Run$Posterior_Means
   }
-  if(Sel.SNP=="TRUE"){
-    Neutral=Post.Samp_Neutral(Data,Prior=Prior,N.Samples,Pop.col,Geno.cols)
-    Runn=GetNonNeutralLoci(PostMeansFull=Post.means,NullSamples=Neutral$Theta.Samples,
-                           tailp=tailp)
-    Sel=Runn$CandidateLoci
-    N.Sel=Runn$N.CandidateLoci
+  if(Method=="G-MC" || Method=="G-Laplace"){
+    Neutral=PostSamp_Neutral(Data,Prior=Prior.neutral,N.Samples,Pop.col,Geno.cols)
   }else{
-    Sel=c(1:nloci)
-    N.Sel=nloci
+    Neutral=PostSampPed_Neutral(Data,Prior=Prior.neutral,N.Samples,Pop.col,Geno.cols,
+                                Pedigree)
   }
+  Runn=GetNonNeutralLoci(PostMeansFull=Post.means,NullSamples=Neutral$Theta.Samples,
+                         tailp=tailp)
+  Sel=Runn$CandidateLoci
+  N.Sel=Runn$N.CandidateLoci
   Post.means=Post.means[Sel]
   Clus=apply(matrix(N.Groups),1,FUN = run2,Postmeans=Post.means)
   AIC=matrix(NA,nrow=G)
@@ -107,7 +128,9 @@ run_G=function(Data,N.Groups,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,Sel.SN
   Group.sizes=Clus[[sel]]@size
   Grouping=matrix(Clus[[sel]]@cluster)
   Memb.Prob=posterior(Clus[[sel]])
+  Post.means=data.frame(cbind(Sel,Post.means))
+  colnames(Post.means)=c("Marker_Consecutive_ID","Posterior_Mean")
+
   return(list(N_Groups=sel.k,Groups=Grouping,Group.sizes=Group.sizes,Post.means=Post.means,
               NCandidateLoci=N.Sel,Selected_Loci=Sel,Method=Method))
 }
-

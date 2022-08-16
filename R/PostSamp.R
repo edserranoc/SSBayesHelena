@@ -29,11 +29,11 @@
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 #'signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
 #'
-#'@examples
-#'data(Genodata1)
-#'Ex1=PostSamp(Genodata1,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
-#'Ex1$ Theta.Samples
 #'@export
+#'
+#'@examples Data=sim.1data
+#'Ex1=PostSamp(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+#'summary(Ex1$Posterior_Means)
 
 PostSamp=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols){
   Data=data.frame(Data)
@@ -75,5 +75,9 @@ PostSamp=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols){
     }
   }
   PostMean.Theta=rowMeans(Theta)
-  return(list(Theta.Samples=Theta,PosteriorMeans=PostMean.Theta))
+  Table<-matrix(table(Data[,Pop.col]))
+  Table<-data.frame(cbind(seq(1:npop),Table))
+  colnames(Table)<-c("Subpopulation","Number of individuals")
+  return(list(Theta.Samples=Theta,Posterior_Means=PostMean.Theta,
+              N_Individuals=Table))
 }

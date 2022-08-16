@@ -32,9 +32,9 @@ Estimates the Fst parameter using the 'full model' under the approach developed
 by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
 }
 \examples{
-data(Genodata1)
-Ex1=PostSamp(Genodata1,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
-Ex1$ Theta.Samples
+Data=sim.1data
+Ex1=PostSamp(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+summary(Ex1$Posterior_Means)
 }
 \references{
 Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection

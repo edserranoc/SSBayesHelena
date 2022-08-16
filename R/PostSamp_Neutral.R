@@ -1,4 +1,4 @@
-##'PostSamp_Neutral
+#'PostSamp_Neutral
 #'
 #'@description Estimates the Fst parameter using the 'null model' under the approach developed
 #'by Gianola et al. (2010) to infer selection signatures using genomic data from diploid individuals
@@ -31,13 +31,9 @@
 #'
 #'@export
 #'
-#'@examples data(Genodata1)
-#'Ex1=PostSamp_Neutral(Genodata1,Prior=c(1/2,1/3),N.Samples=5000,
-#'Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
-#'head(Ex1$ Theta.Samples)
-#'tail(Ex1$ Theta.Samples)
-
-
+#'@examples Data=sim.1data
+#'Ex1=PostSamp_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+#'summary(Ex1$Posterior_Means)
 
 PostSamp_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols){
   Data=data.frame(Data)
@@ -57,5 +53,5 @@ PostSamp_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols){
     }
   }
   PostMean.Theta=rowMeans(Theta)
-  return(list(Theta.Samples=Theta,PosteriorMeans=PostMean.Theta))
+  return(list(Theta.Samples=Theta,Posterior_Means=PostMean.Theta))
 }
