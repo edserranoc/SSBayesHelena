@@ -1,5 +1,5 @@
 Package: SSBayesHelena
-Title: Implementation of the method of Gianola
+Title: A two-step procedure for analysis of FST statistics
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Carlos Alberto", 
