@@ -4,7 +4,7 @@
 \alias{Laplace_Ped}
 \title{Laplace_Ped}
 \usage{
-Laplace_dep(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,Pedigree)
+Laplace_Ped(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,Pedigree)
 }
 \arguments{
 \item{Data}{A data frame or matrix containing genotypic data from m markers as well as a column
@@ -32,7 +32,7 @@ N_Founders: A table with the number of founders in each subpopulation.
 Estimates the posterior means of the Fst parameter using the Laplace
 approximation under the full model proposed by Gianola et al. (2010) to infer selection
 signatures using genomic data from diploid individuals and the likelihood function
-derived by Mart?nez et al. (2017) to consider pedigree information.
+derived by Martínez et al. (2017) to consider pedigree information.
 }
 \examples{
 Data=Data2

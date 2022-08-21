@@ -3,9 +3,9 @@
 #'@description Estimates the posterior means of the Fst parameter using the Laplace
 #'approximation under the full model proposed by Gianola et al. (2010) to infer selection
 #'signatures using genomic data from diploid individuals and the likelihood function
-#'derived by Mart?nez et al. (2017) to consider pedigree information.
+#'derived by Martínez et al. (2017) to consider pedigree information.
 #'
-#'@usage Laplace_dep(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,Pedigree)
+#'@usage Laplace_Ped(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,Pedigree)
 #'
 #'@param Data A data frame or matrix containing genotypic data from m markers as well as a column
 #'indicating the subpopulation to which the individual belongs.Subpopulations must be coded

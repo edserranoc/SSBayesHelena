@@ -9,7 +9,9 @@
 #'derived by Martínez et al. (2017).
 #'
 #'@usage run_G(Data,N.Groups,Prior,N.Samples,Pop.col,
-#'Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
+#'Geno.cols,tailp=0.05,Prior.neutral,
+#'Method=c("G-MC","GPedM-MC","G-Laplace","GPedM-Laplace"),
+#'Pedigree=NULL)
 #'
 #'@param Data A data frame or matrix containing genotypic data
 #'from m markers as well as a column
@@ -56,6 +58,9 @@
 #'GPedM-Laplace: Laplace approximation using the original model formulation,
 #'GPedM-Laplace: Laplace approximation using the model that incorporates pedigree information
 #'
+#'@param Pedigree Data frame or matrix with three columns correspondint to: individual, sire and dam.
+#'It must be ordered as the Data set.
+#'
 #'@return A list containing the following objects.
 #'N_Groups. The selected number of groups used to cluster markers.
 #'Groups. The groups of markers.
@@ -100,6 +105,7 @@
 #'summary(G_Method_Ped$Post.means[,2])
 #'summary(Laplace_PedEx$Post.means[,2])
 #'summary(Laplace$Post.means[,2])
+#'
 
 run_G=function(Data,N.Groups,Prior=c(1/2,1/2),N.Samples=NULL,Pop.col,Geno.cols,tailp=0.05,
                Prior.neutral=c(1/2,1/2),

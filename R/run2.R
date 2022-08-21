@@ -22,6 +22,5 @@
 
 
 run2=function(k,Postmeans){
-  require(flexmix)
   tryCatch(flexmix(Postmeans ~ 1,k=k,control=list(tol=0.001,iter=500)),error=function(e){return(c(NA,NA))})
 }

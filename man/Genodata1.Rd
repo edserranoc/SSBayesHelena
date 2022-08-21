@@ -3,12 +3,12 @@
 \docType{data}
 \name{Genodata1}
 \alias{Genodata1}
-\title{Genodata1}
+\title{Genotypic data from 49 markers and 3 subpopulations}
 \format{
-A data frame with 1247 rows and 50 variables:
+A data frame with 1247 rows and 50 variables
 }
 \usage{
-Genodata1
+data(Genodata1)
 }
 \description{
 A data frame or matrix containing genotypic
@@ -20,4 +20,4 @@ consecutive integer numbers starting from 1.
 \author{
 Carlos Alberto Martínez Niño \email{cmartinez@agrosavia.co}
 }
-\keyword{data}
+\keyword{datasets}

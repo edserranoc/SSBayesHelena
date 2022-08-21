@@ -5,7 +5,9 @@
 \title{run_G}
 \usage{
 run_G(Data,N.Groups,Prior,N.Samples,Pop.col,
-Geno.cols,Sel.SNP='TRUE',tailp=0.05,Prior.neutral)
+Geno.cols,tailp=0.05,Prior.neutral,
+Method=c("G-MC","GPedM-MC","G-Laplace","GPedM-Laplace"),
+Pedigree=NULL)
 }
 \arguments{
 \item{Data}{A data frame or matrix containing genotypic data
@@ -52,6 +54,9 @@ pedigree information via
 the likelihood function derived by Martínez et al. (2017)
 GPedM-Laplace: Laplace approximation using the original model formulation,
 GPedM-Laplace: Laplace approximation using the model that incorporates pedigree information}
+
+\item{Pedigree}{Data frame or matrix with three columns correspondint to: individual, sire and dam.
+It must be ordered as the Data set.}
 }
 \value{
 A list containing the following objects.
@@ -94,6 +99,7 @@ summary(G_Method$Post.means[,2])
 summary(G_Method_Ped$Post.means[,2])
 summary(Laplace_PedEx$Post.means[,2])
 summary(Laplace$Post.means[,2])
+
 }
 \references{
 Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
