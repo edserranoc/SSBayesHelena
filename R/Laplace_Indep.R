@@ -25,7 +25,7 @@
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
 #'signatures using genetic markers. Genetic Research Cambridge, 92; 141-155.
 #'
-#'@examples Data=sim.1data
+#'@examples Data=data(Data1)
 #'Ex=Laplace_indep(Data2,Prior=c(1/2,1/2),Pop.col=1,Geno.cols=c(2:1001))
 #'summary(Ex$Posterior_Means)
 

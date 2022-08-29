@@ -33,7 +33,7 @@
 #'
 #'@export
 #'
-#'@examples Data=sim.1data
+#'@examples Data=data(Data1)
 #'Ex1=PostSamp(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
 #'summary(Ex1$Posterior_Means)
 

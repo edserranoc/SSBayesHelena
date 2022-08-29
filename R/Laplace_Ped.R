@@ -38,12 +38,13 @@
 #'for marker effects and derivation of the joint probability mass function of genotypes.
 #'Journal of Theoretical Biology 417, 8-19.
 #'
+#'@export
+#'
 #'@examples Data=Data2
-#'Ex=Laplace_dep(Data2,Prior=c(1/2,1/2),Pop.col=4,Geno.cols=c(5:1004),Pedigree=Data2[,1:3])
+#'Ex=Laplace_Ped(Data,Prior=c(1/2,1/2),Pop.col=4,Geno.cols=c(5:1004),Pedigree=Data2[,1:3])
 #'summary(Ex$Posterior_Means)
 
-Laplace_Ped<-function(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,
-                      Pedigree){
+Laplace_Ped<-function(Data,Prior=c(1/2,1/2),Pop.col,Geno.cols,Pedigree){
   Data<-data.frame(Data)
   if(ncol(Pedigree)!=3)stop("Pedigree file must contain 3 columns: individual, sire and dam")
   Sum<-as.numeric(is.na(Pedigree[,2]))+as.numeric(is.na(Pedigree[,3]))
