@@ -3,7 +3,7 @@
 \docType{data}
 \name{Data2}
 \alias{Data2}
-\title{Data2 dataframe}
+\title{Genotypic data with Pedigree}
 \format{
 A data frame with 1250 rows and 1004 variables
 }
@@ -11,6 +11,8 @@ A data frame with 1250 rows and 1004 variables
 data(Data2)
 }
 \description{
-A data frame.
+A data frame or matrix containing genotypic
+data from 1250 individuals as well as colums
+indicating sire, dam and subpopulation
 }
 \keyword{datasets}

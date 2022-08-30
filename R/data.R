@@ -15,10 +15,11 @@
 NULL
 
 
-#' Data2 dataframe
+#' Genotypic data with Pedigree
 #'
-#'A data frame.
-#'
+#'A data frame or matrix containing genotypic
+#' data from 1250 individuals as well as colums
+#' indicating sire, dam and subpopulation
 #' @docType data
 #' @keywords datasets
 #' @name Data2
