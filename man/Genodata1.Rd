@@ -18,4 +18,7 @@ to which the individual belongs.
 Subpopulations must be coded using
 consecutive integer numbers starting from 1.
 }
+\author{
+Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
+}
 \keyword{datasets}

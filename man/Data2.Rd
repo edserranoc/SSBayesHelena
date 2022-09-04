@@ -15,4 +15,7 @@ A data frame or matrix containing genotypic
 data from 1250 individuals as well as colums
 indicating sire, dam and subpopulation
 }
+\author{
+Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
+}
 \keyword{datasets}

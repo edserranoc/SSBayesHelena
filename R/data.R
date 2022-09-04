@@ -10,6 +10,7 @@
 #' @docType data
 #' @keywords datasets
 #' @name Genodata1
+#' @author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #' @usage data(Genodata1)
 #' @format A data frame with 1247 rows and 50 variables
 NULL
@@ -23,6 +24,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name Data2
+#' @author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #' @usage data(Data2)
 #' @format A data frame with 1250 rows and 1004 variables
 NULL
@@ -35,6 +37,7 @@ NULL
 #' @docType data
 #' @keywords datasets
 #' @name Data1
+#' @author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #' @usage data(Data1)
 #' @format A data frame with 1250 rows and 1004 variables
 NULL

@@ -13,4 +13,7 @@ data(Data1)
 \description{
 A data frame or matrix.
 }
+\author{
+Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
+}
 \keyword{datasets}
