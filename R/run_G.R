@@ -69,8 +69,8 @@
 #'NCandidateLoci. The number of selected loci.
 #'Selected_Loci. The ID's of the selected loci.
 #'Method. The method used to estimate the posterior means of Fst.
-
-
+#'
+#'
 #'@author Carlos Alberto Martínez Niño (cmartinez@@agrosavia.co).
 #'
 #'@references Gianola, D., Simianer, H., Qanbari, S. 2010. A two-step method for detecting selection
@@ -84,20 +84,20 @@
 #'
 #'@export
 #'
-#'@examples Data=sim.2data
-#'G_Method3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'@examples Data=Data2
+#'G_Method=run_G(Data,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
 #'Geno.cols=c(5:1004),tailp=0.05,
 #'Prior.neutral=c(1/2,1/2),Method="G-MC")
 #'
-#'G_Method_Ped3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'G_Method_Ped=run_G(Data,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
 #'                    Geno.cols=c(5:1004),tailp=0.05,
-#'                    Prior.neutral=c(1/2,1/2),Method="GPedM-MC",Pedigree=Data3[,1:3])
+#'                    Prior.neutral=c(1/2,1/2),Method="GPedM-MC",Pedigree=Data[,1:3])
 #'
-#'Laplace_PedEx3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'Laplace_PedEx=run_G(Data,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
 #'                     Geno.cols=c(5:1004),tailp=0.05,
-#'                     Prior.neutral=c(1/2,1/2),Method="GPedM-Laplace",Pedigree=Data3[,1:3])
+#'                     Prior.neutral=c(1/2,1/2),Method="GPedM-Laplace",Pedigree=Data[,1:3])
 #'
-#'Laplace3=run_G(Data3,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
+#'Laplace=run_G(Data,N.Groups=c(2,3),Prior=c(1/2,1/2),N.Samples=2000,Pop.col=4,
 #'               Geno.cols=c(5:1004),tailp=0.05,
 #'               Prior.neutral=c(1/2,1/2),Method="G-Laplace")
 #'

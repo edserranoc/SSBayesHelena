@@ -37,9 +37,9 @@ by Gianola et al. (2010) to infer selection signatures using genomic data from d
 incorporating pedigree information by using a modification of the likelihood derived by Martínez at al. (2017)
 }
 \examples{
-Data=data(Data1)
-Ex1=PostSampPed(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,
-Geno.cols=c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
+Data=Data2
+Ex1=PostSampPed(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=4,
+Geno.cols=c(5:ncol(Data)),Pedigree=Data[,1:3])
 summary(Ex1$Posterior_Means)
 }
 \references{

@@ -43,10 +43,10 @@
 #'
 #'@export
 #'
-#'@examples Data=data(Data1)
+#'@examples Data=Data2
 #'Ex1=PostSampPed_Neutral(Data,Prior=c(1/2,1/3),
-#'N.Samples=5000,Pop.col=1,
-#'Geno.cols= c(5:ncol(Genodata1)),Pedigree=Data[,1:4])
+#'N.Samples=5000,Pop.col=4,
+#'Geno.cols= c(5:ncol(Data)),Pedigree=Data[,1:3])
 #'summary(Ex1$Posterior_Means)
 
 PostSampPed_Neutral=function(Data,Prior=c(1/2,1/2),N.Samples,Pop.col,Geno.cols,

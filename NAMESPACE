@@ -2,10 +2,12 @@
 
 export(GetNonNeutralLoci)
 export(Laplace_Ped)
+export(Laplace_indep)
 export(PostSamp)
 export(PostSampPed)
 export(PostSampPed_Neutral)
 export(PostSamp_Neutral)
+export(run2)
 export(run_G)
 import(flexmix)
 importFrom(stats,quantile)

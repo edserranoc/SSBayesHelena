@@ -28,8 +28,8 @@ approximation under the full model proposed by by Gianola et al. (2010) to infer
 signatures using genomic data from diploid individuals.
 }
 \examples{
-Data=data(Data1)
-Ex=Laplace_indep(Data2,Prior=c(1/2,1/2),Pop.col=1,Geno.cols=c(2:1001))
+Data=Data1
+Ex=Laplace_indep(Data,Prior=c(1/2,1/2),Pop.col=1,Geno.cols=c(2:1001))
 summary(Ex$Posterior_Means)
 }
 \references{
