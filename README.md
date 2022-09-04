@@ -14,7 +14,6 @@ clusters of $\theta$ - statistics.
 ## Features
 
 - The samples in the first step are constructed without Markov chains. This approach exhibits computational simplicity as one of its main features.
-
 - It is implemented a function to compute the Lagrange approximation for the posterior median and variance of $F_{ST}$ parameter.
 
 
