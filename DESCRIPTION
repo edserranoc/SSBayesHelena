@@ -17,7 +17,7 @@ Authors@R:
              family = "Gonzalez Guzman", 
              role = c("aut"))
            )
-Description: A two-step procedure presented in Gianola et al. (2010). is implemented for analysis of FST statistics obtained for a battery of loci,which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model for drawing samples from posterior distributions of tetha-parameters, but without constructing Markov chains. This step assigns a weakly informative prior to allelic frequencies and does not make any assumptions about evolutionary models. The second step regards samples from these posterior distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying clusters of tetha-statistics.
+Description: Performs the two-step approach for detecting selection signatures using genomic data from diploid individuals and biallelic markers developed by Gianola et al. (2010) and modifications to perform inference based on the Laplace approximation and to incorporate pedigree information using the likelihood derived by Martínez et al. (2017).
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
