@@ -33,7 +33,7 @@ by Gianola et al. (2010) to infer selection signatures using genomic data from d
 }
 \examples{
 Data=Data1
-Ex1=PostSamp_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Genodata1)))
+Ex1=PostSamp_Neutral(Data,Prior=c(1/2,1/3),N.Samples=5000,Pop.col=1,Geno.cols= c(2:ncol(Data)))
 summary(Ex1$Posterior_Means)
 }
 \references{
