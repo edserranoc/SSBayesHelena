@@ -2,19 +2,29 @@
 
 ## Overview
 
- A two-step procedure presented in 
- [Gianola, D., Simianer, H., & Qanbari, S. (2010)](https://www.cambridge.org/core/journals/genetics-research/article/twostep-method-for-detecting-selection-signatures-using-genetic-markers/4447A599402A4EF9862088D3B034B48B) 
- is implemented for analysis of $F_{ST}$ statistics obtained for a battery of loci,
-which eventually leads to a clustered structure of values. The first step uses a simple Bayesian model
-for drawing samples from posterior distributions of $\theta$ - parameters. This step assigns a weakly informative prior to allelic frequencies and does not make any
-assumptions about evolutionary models. The second step regards samples from these posterior
-distributions as ‘data’ and fits a sequence of finite mixture models, with the aim of identifying
-clusters of $\theta$ - statistics.
+Performs the two-step approach for detecting
+selection signatures using genomic data from
+diploid individuals and biallelic markers developed by
+Gianola et al. (2010) and modifications to perform
+inference based on the Laplace approximation and to
+incorporate pedigree information using the likelihood
+derived by Martínez et al. (2017).
 
 ## Features
 
-- The samples in the first step are constructed without Markov chains. This approach exhibits computational simplicity as one of its main features.
-- It is implemented a function to compute the Lagrange approximation for the posterior median and variance of $F_{ST}$ parameter.
+- Implements relatively simple Bayesian approaches to infer selection signatures via
+Wright’s in diploid organisms using data from biallelic molecular markers.
+- Two models and two methods to compute de posterior mean of the are available,
+resulting in four approximations.
+- The basic method is the original one developed by Gianola et al. (2010), the
+package also implements a variant using the Laplace approximation instead of
+Monte Carlo integration to compute the posterior mean.
+- The other method extents the original Bayesian model to infer allele frequencies by
+incorporating pedigree information via a modification of the probability mass
+function derived by Martínez et al. (2017), for this approach, the posterior mean can
+be computed using the Laplace approximation or Monte Carlo integration.
+- Allows using arbitrary model hyperparameters and even posing a different set of
+hyperparameters for each subpopulation.
 
 
 ## Installation
