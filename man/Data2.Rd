@@ -3,7 +3,7 @@
 \docType{data}
 \name{Data2}
 \alias{Data2}
-\title{Genotypic data with Pedigree}
+\title{Data2 dataset}
 \format{
 A data frame with 1250 rows and 1004 variables
 }
@@ -11,9 +11,14 @@ A data frame with 1250 rows and 1004 variables
 data(Data2)
 }
 \description{
-A data frame or matrix containing genotypic
-data from 1250 individuals as well as colums
-indicating sire, dam and subpopulation
+Founders were sampled and a single population was created. Then, subpopulation
+numbers were randomly assigned to the individuals to create three groups of size 600, 300
+and 350. Thus, in this dataset it is expected that differences in allele frequencies are due to
+chance, not to selection or other evolutionary force. This dataset contains genotypes for
+1000 biallelic markers from 1250 individuals. Columns one to three contain individual, sire
+and dam ID, respectively, so these correspond to the pedigree, column 4 contains the
+subpopulation (coded as 1, 2 or 3) and the remaining ones contain the 1000 marker
+genotypes.
 }
 \author{
 Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).

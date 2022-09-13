@@ -3,7 +3,7 @@
 \docType{data}
 \name{Data1}
 \alias{Data1}
-\title{Data1 dataframe}
+\title{Data1 dataset}
 \format{
 A data frame with 1250 rows and 1004 variables
 }
@@ -11,7 +11,10 @@ A data frame with 1250 rows and 1004 variables
 data(Data1)
 }
 \description{
-A data frame or matrix.
+Founders were split into three subpopulations with different selection criteria and
+mating designs. This dataset contains genotypes of 1000 biallelic loci from 1247
+individuals (506, 441 and 300 in each subpopulation). The first column is the subpopulation
+(1, 2 or 3) and the remaining 1000 columns correspond to molecular markers.
 }
 \author{
 Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
