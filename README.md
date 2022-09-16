@@ -5,7 +5,7 @@
 Performs the two-step approach for detecting
 selection signatures using genomic data from
 diploid individuals and biallelic markers developed by
-Gianola et al. (2010) and modifications to perform
+Gianola et al. (2010) and modifications to carry out
 inference based on the Laplace approximation and to
 incorporate pedigree information using the likelihood
 derived by Martínez et al. (2017).
