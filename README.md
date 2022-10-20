@@ -13,7 +13,7 @@ derived by Martínez et al. (2017).
 ## Features
 
 - Implements relatively simple Bayesian approaches to infer selection signatures via
-Wright’s in diploid organisms using data from biallelic molecular markers.
+Wright’s $F_{ST}$ in diploid organisms using data from biallelic molecular markers.
 - Two models and two methods to compute de posterior mean of the are available,
 resulting in four approximations.
 - The basic method is the original one developed by Gianola et al. (2010), the
@@ -38,3 +38,13 @@ devtools::install_github("edserranoc/SSBayesHelena")
 
 The SSBayesHelena package as a whole is licensed under the GPLv3.0. See the 
 [LICENSE](LICENSE) file for more details.
+
+## Acknowledgment
+
+The Corporación Colombiana de Investigación Agropecuaria-Agrosavia and Universidad Nacional de Colombia provided financial support for this project, which is warmly acknowledged.
+
+
+
+
+
+
