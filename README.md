@@ -13,7 +13,7 @@ derived by Martínez et al. (2017).
 ## Features
 
 - Implements relatively simple Bayesian approaches to infer selection signatures via
-Wright’s in diploid organisms using data from biallelic molecular markers.
+Wright’s $F_{ST}$ in diploid organisms using data from biallelic molecular markers.
 - Two models and two methods to compute de posterior mean of the are available,
 resulting in four approximations.
 - The basic method is the original one developed by Gianola et al. (2010), the
