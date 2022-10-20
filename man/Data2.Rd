@@ -3,7 +3,7 @@
 \docType{data}
 \name{Data2}
 \alias{Data2}
-\title{Data2 dataset}
+\title{Data2}
 \format{
 A data frame with 1250 rows and 1004 variables
 }
@@ -11,14 +11,16 @@ A data frame with 1250 rows and 1004 variables
 data(Data2)
 }
 \description{
-Founders were sampled and a single population was created. Then, subpopulation
-numbers were randomly assigned to the individuals to create three groups of size 600, 300
-and 350. Thus, in this dataset it is expected that differences in allele frequencies are due to
-chance, not to selection or other evolutionary force. This dataset contains genotypes for
-1000 biallelic markers from 1250 individuals. Columns one to three contain individual, sire
-and dam ID, respectively, so these correspond to the pedigree, column 4 contains the
-subpopulation (coded as 1, 2 or 3) and the remaining ones contain the 1000 marker
-genotypes.
+This dataset was simulated using a backward in time approach as implemented in
+the QMSim software (Sargolzaei and Schenkel, 2013). A historical population of 1000
+generations (each one of size 5000) was created and individuals from the least generation
+were sampled at random to create a single population. Then, subpopulation numbers were
+randomly assigned to individuals to create three groups of size 600, 300 and 350. Thus, in
+this dataset it is expected that differences in allele frequencies are due to chance, not to
+selection or another evolutionary force. This dataset contains genotypes for 1000 biallelic
+markers from 1250 individuals. Columns one to three contain individual, sire and dam ID,
+respectively, so these correspond to the pedigree, column 4 contains the subpopulation
+(coded as 1, 2 or 3) and the remaining ones contain the 1000 marker genotypes.
 }
 \author{
 Carlos Alberto Martínez Niño (cmartinez@agrosavia.co).
