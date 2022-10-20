@@ -38,3 +38,13 @@ devtools::install_github("edserranoc/SSBayesHelena")
 
 The SSBayesHelena package as a whole is licensed under the GPLv3.0. See the 
 [LICENSE](LICENSE) file for more details.
+
+## Acknowledgment
+
+The Corporación Colombiana de Investigación Agropecuaria-Agrosavia and Universidad Nacional de Colombia provided financial support for this project, which is warmly acknowledged.
+
+
+
+
+
+
